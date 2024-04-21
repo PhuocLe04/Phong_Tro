@@ -1,0 +1,23 @@
+﻿@model List<Phong_Tro.Models.DanhGia>
+
+<h2>Đánh Giá</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày Đánh Giá</th>
+            <th>Điểm Đánh Giá</th>
+            <th>Nội Dung</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var danhGia in Model)
+        {
+            <tr>
+                <td>@danhGia.NgayDanhGia.ToShortDateString()</td>
+                <td>@danhGia.DiemDanhGia</td>
+                <td>@danhGia.NoiDung</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Danh sách phòng trọ nổi bật";
+    Layout = "~/Views/Shared/Main.cshtml";
+    System.Globalization.CultureInfo cul = new System.Globalization.CultureInfo("vi-VN");
+    System.Globalization.NumberFormatInfo numberInfo = cul.NumberFormat;
+}
+
+<div class="container">
+    <hr>
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        @foreach (var phongTro in ViewBag.PhongTroList)
+        {
+            <div class="col-md-3 product-men">
+                <div class="product-sec1 px-sm-4 px-3 py-sm-5 py-3 mb-4">
+                    <div class="men-pro-item simpleCart_shelfItem">
+                        <div class="men-thumb-item text-center">
+
+                            <img src="@phongTro.hinhanh" alt="Product Image" class="card-img-top">
+                            <div class="men-cart-pro">
+                                <div class="inner-men-cart-pro">
+                                    <a asp-controller="BaiDang" asp-action="Detail" asp-route-Id="@phongTro.MaPhongTro" class="link-product-add-cart">Xem Thêm</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-info-product text-center border-top mt-2">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <small>
+                                        @phongTro.LoaiPhong
+                                    </small>
+                                </h4>
+                                <h5>
+                                    <span>@phongTro.DienTich m²- @phongTro.SlnguoiToiDa người</span>
+                                </h5>
+                                <p class="card-text">Giá: @phongTro.Gia.ToString("N0", numberInfo) đ</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="maSanPham" value="@phongTro.MaPhongTro" />
+                                        <input type="hidden" name="tenSanPham" value="@phongTro.LoaiPhong" />
+                                        <input type="hidden" name="gia" value="price_here" />
+                                        <input type="submit" name="submit" value="Lưu Phòng"class="btn btn-primary btn-xs btn-block" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

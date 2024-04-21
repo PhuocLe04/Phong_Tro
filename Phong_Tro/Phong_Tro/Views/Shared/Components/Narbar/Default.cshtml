@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Phong_Tro.Models.LoaiPhong>
+
+<div class="container">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light pl-0">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto text-center mr-xl-5">
+				<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+					<a class="nav-link" asp-controller="Home">
+						Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item dropdown active mr-lg-2 mb-lg-0 mb-2">
+					<a class="nav-link dropdown-toggle" asp-controller="BaiDang" asp-action="Index" role="button" data-toggle="dropdown">
+						Cho Thuê
+					</a>
+					<div class="dropdown-menu">
+						<div class="agile_inner_drop_nav_info p-4">
+							<div class="row">
+								<div class="col-sm-6 multi-gd-img">
+									<ul class="multi-column-dropdown">
+										<li>
+											<a asp-controller="BaiDang" asp-action="Index">Tất cả</a>
+										</li>
+										@foreach (var item in Model)
+										{
+											<li><a href="/BaiDang/BaiDangtheoloai?id=@item.MaLoaiPhong">@item.TenLoaiPhong</a></li>
+
+
+										}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<!-- Add more navigation items here -->
+			</ul>
+		</div>
+
+		<section class="list_of_district">
+			<label for="city">Thành Phố:</label>
+			<select id="city">
+				<option value="hcm">Thành Phố Hồ Chí Minh</option>
+				<!-- Add more cities if needed -->
+			</select>
+
+			<label for="district">Quận:</label>
+			<select id="district" onchange="changeWards()">
+				<option value="q1">Quận 1</option>
+				<option value="q3">Quận 3</option>
+				<option value="q4">Quận 4</option>
+				<option value="q5">Quận 5</option>
+				<option value="q6">Quận 6</option>
+				<option value="q7">Quận 7</option>
+				<option value="q8">Quận 8</option>
+				<option value="q10">Quận 10</option>
+				<option value="q11">Quận 11</option>
+				<option value="q12">Quận 12</option>
+				<option value="qgo">Quận Gò Vấp</option>
+				<option value="qbt">Quận Bình Thạnh</option>
+				<option value="qphu">Quận Phú Nhuận</option>
+				<option value="qtanbinh">Quận Tân Bình</option>
+				<option value="qbtan">Quận Bình Tân </option>
+				<option value="qthuduc">Quận Thủ Đức</option>
+				<option value="qbinhtan">Quận Bình Tân</option>
+				<!-- Add more districts if needed -->
+			</select>
+
+
+			<label for="ward">Phường:</label>
+			<select id="ward">
+				<!-- Wards will be populated dynamically based on selected district -->
+			</select>
+		</section>
+	</nav>
+</div>

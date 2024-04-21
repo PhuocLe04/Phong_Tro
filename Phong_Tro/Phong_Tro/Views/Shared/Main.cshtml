@@ -1,0 +1,539 @@
+﻿@{
+	ViewBag.title = "Main";
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Thuê Phòng </title>
+	<!-- basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- mobile metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<!-- Add other meta tags here -->
+	<!-- //Meta tag Keywords -->
+	<!-- Custom-Files -->
+	<link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Bootstrap css -->
+	<link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Main css -->
+	<link rel="stylesheet" href="~/css/fontawesome-all.css">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link href="~/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" media="all" />
+	<!-- pop-up-box -->
+	<link href="~/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- menu style -->
+	<!-- //Custom-Files -->
+	<!-- web fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		  rel="stylesheet">
+	<!-- //web fonts -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<!-- Include SwiperJS Library -->
+	<script src="https://unpkg.com/swiper/js/swiper.js">  </script>
+	<script src="https://unpkg.com/swiper/js/swiper.min.js">  </script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <!-- top-header -->
+	<div class="header-bot">
+		<div class="container">
+			<div class="row header-bot_inner_wthreeinfo_header_mid">
+				<!-- logo -->
+				<div class="col-md-3 logo_agile">
+					<h1 class="text-center">
+						<a asp-controller="Home" asp-action="Index" class="font-weight-bold font-italic">
+							Your Motel
+						</a>
+					</h1>
+				</div>
+				<!-- //logo -->
+				<!-- header-bot -->
+				<div class="col-md-9 header mt-4 mb-md-0 mb-4">
+					<div class="row justify-content-end">
+						<!-- search -->
+						<div class="col-8 agileits_search">
+							<form class="form-inline my-2 my-lg-0 justify-content-end align-items-center" asp-controller="TimKiemPhongTro" asp-action="TimKiemPhongTro" method="post">
+								<input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm" name="diaChi" required>
+								<!-- Thêm các trường tìm kiếm khác tại đây -->
+								<button class="btn my-2 my-sm-0" type="submit">Tìm kiếm</button>
+							</form>
+						</div>
+
+						<!-- //search -->
+						<!-- Nút Đăng tin -->
+						<div class="mr-3">
+							<button class="btn btn-primary">
+								<i class="fas fa-edit"></i> Đăng tin
+							</button>
+						</div>
+						<!-- //Nút Đăng tin -->
+						<!-- Nút Log In -->
+						<div class="text-center border-right text-white">
+							<a asp-controller="AccountAdmin" asp-action="Login" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" style="background-color: #F45C5D;">
+								<i class="fas fa-sign-in-alt mr-2"></i> Log In
+							</a>
+						</div>
+						<!-- //Nút Log In -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@await Component.InvokeAsync("Narbar")
+	@RenderBody()
+	<footer>
+		<!-- footer third section -->
+		<div class="w3l-middlefooter-sec">
+			<div class="container py-md-5 py-sm-4 py-3">
+				<div class="row footer-info w3-agileits-info">
+					<!-- footer categories -->
+					<div class="col-md-3 col-sm-6 footer-grids">
+						<h3 class="text-white font-weight-bold mb-3">Cho Thuê</h3>
+						<ul>
+							<li>
+								<a asp-controller="BaiDang" asp-action="Index">Tất cả</a>
+							</li>
+							<br />
+							<li>
+								<a href="product.html">Căn Họ/Chung Cư</a>
+							</li>
+							<br />
+							<li>
+								<a href="product.html">Nhà ở</a>
+							</li>
+							<br />
+							<li>
+								<a href="product.html">Phòng Trọ</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //footer categories -->
+					<!-- quick links -->
+					<div class="col-md-3 col-sm-6 footer-grids mt-sm-0 mt-4">
+						<h3 class="text-white font-weight-bold mb-3">Quick Links</h3>
+						<ul>
+							<li class="mb-3">
+								<a href="about.html">Về chúng tôi</a>
+							</li>
+							<li class="mb-3">
+								<a href="contact.html">Liên hệ chúng tôi</a>
+							</li>
+							<li class="mb-3">
+								<a href="help.html">Giúp đỡ</a>
+							</li>
+							<li class="mb-3">
+								<a href="faqs.html">Câu hỏi thường gặp</a>
+							</li>
+							<li class="mb-3">
+								<a href="terms.html">Điều khoản sử dụng</a>
+							</li>
+							<li>
+								<a href="privacy.html">Privacy Policy</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 footer-grids mt-md-0 mt-4">
+						<h3 class="text-white font-weight-bold mb-3">Liên lạc</h3>
+						<ul>
+							<li class="mb-3">
+								<i class="fas fa-map-marker"></i> 123 Tong Huu Dinh, Thao Dien, Tp.Thu Duc
+							</li>
+							<li class="mb-3">
+								<i class="fas fa-mobile"></i> 333 222 3333
+							</li>
+							<li class="mb-3">
+								<i class="fas fa-phone"></i> +222 11 4444
+							</li>
+							<li class="mb-3">
+								<i class="fas fa-envelope-open"></i>
+								<a href="mailto:example@mail.com"> mail 1@example.com</a>
+							</li>
+							<li>
+								<i class="fas fa-envelope-open"></i>
+								<a href="mailto:example@mail.com"> mail 2@example.com</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
+						<!-- social icons -->
+						<div class="footer-grids  w3l-socialmk mt-3">
+							<h3 class="text-white font-weight-bold mb-3">Theo dõi chúng tôi tại</h3>
+							<div class="social">
+								<ul>
+									<li>
+										<a class="icon fb" href="#">
+											<i class="fab fa-facebook-f"></i>
+										</a>
+									</li>
+									<li>
+										<a class="icon tw" href="#">
+											<i class="fab fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a class="icon gp" href="#">
+											<i class="fab fa-google-plus-g"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //social icons -->
+					</div>
+				</div>
+				<!-- //quick links -->
+			</div>
+		</div>
+		<!-- //footer third section -->
+		<!-- footer fourth section -->
+		<!-- payment -->
+		</div>
+		</div>
+		<!-- //footer fourth section (text) -->
+	</footer>
+</body>
+
+</html>
+<style>
+	.header-bot {
+		background: #FFCC99;
+	}
+	.top_nav_right {
+		background: #F45C5D;
+	}
+
+	.btn{
+		background: #F45C5D;
+		position: center;
+
+	}
+
+</style>
+<script>
+	function changeWards() {
+		var district = document.getElementById("district").value;
+		var wardSelect = document.getElementById("ward");
+		wardSelect.innerHTML = "";
+		switch (district) {
+			case "q1":
+				addWard("p1", "Phường Bến Nghé");
+				addWard("p2", "Phường Cầu Kho");
+				addWard("p3", "Phường Cầu Ông Lãnh");
+				addWard("p4", "Phường Bến Thành");
+				addWard("p5", "Phường Cô Giang");
+				addWard("p6", "Phường Đa Kao");
+				addWard("p7", "Phường Nguyễn Thái Bình");
+				addWard("p8", "Phường Phạm Ngũ Lão");
+				addWard("p9", "Phường Nguyễn Cư Trinh");
+				addWard("p10", "Phường Tân Định");
+				break;
+			case "qthuduc":
+				addWard("p11", "Phường Thảo Điền");
+				addWard("p12", "Phường An Phú");
+				addWard("p13", "Phường An Khánh");
+				addWard("p14", "Phường Bình An");
+				addWard("p15", "Phường Bình Trưng Đông");
+				addWard("p16", "Phường Bình Chiểu");
+				addWard("p17", "Phường Bình Thọ");
+				addWard("p18", "Phường Hiệp Bình Chánh");
+				addWard("p19", "Phường Hiệp Bình Phước");
+				addWard("p20", "Phường Linh Chiểu");
+				addWard("p21", "Phường Linh Đông");
+				addWard("p22", "Phường Linh Tây");
+				addWard("p23", "Phường Linh Trung");
+				addWard("p24", "Phường Linh Xuân");
+				addWard("p25", "Phường Tam Bình");
+				addWard("p26", "Phường Tam Phú");
+				addWard("p27", "Phường Trường Thọ");
+				addWard("p28", "Phường An Lợi Đông");
+				addWard("p29", "Phường Bình Trưng Tây");
+				addWard("p30", "Phường Cát Lái");
+				addWard("p31", "Phường Thạnh Mỹ Lợi");
+				addWard("p32", "Phường Thủ Thiêm");
+				addWard("p33", "Phường Hiệp Phú");
+				addWard("p34", "Phường Long Bình");
+				addWard("p35", "Phường Long Phước");
+				addWard("p36", "Phường Long Thạnh Mỹ");
+				addWard("p37", "Phường Long Trường");
+				addWard("p38", "Phường Phú Hữu");
+				addWard("p39", "Phường Phước Bình");
+				addWard("p40", "Phường Phước Long A");
+				addWard("p41", "Phường Phước Long B");
+				addWard("p42", "Phường Tân Phú");
+				addWard("p43", "Phường Tăng Nhơn Phú A");
+				addWard("p44", "Phường Tăng Nhơn Phú B");
+				addWard("p45", "Phường Trường Thạnh");
+				break;
+
+			case "q3":
+				addWard("p45", "Phường 1");
+				addWard("p46", "Phường 2");
+				addWard("p47", "Phường 3");
+				addWard("p48", "Phường 4");
+				addWard("p49", "Phường 5");
+				addWard("p50", "Phường 6");
+				addWard("p51", "Phường 7");
+				addWard("p52", "Phường 8");
+				addWard("p53", "Phường 9");
+				addWard("p54", "Phường 10");
+				addWard("p55", "Phường 11");
+				addWard("p56", "Phường 12");
+				addWard("p57", "Phường 13");
+				addWard("p58", "Phường 14");
+				break;
+
+			case "q4":
+				addWard("p59", "Phường 1");
+				addWard("p60", "Phường 2");
+				addWard("p61", "Phường 3");
+				addWard("p62", "Phường 4");
+				addWard("p63", "Phường 5");
+				addWard("p64", "Phường 6");
+				addWard("p65", "Phường 7");
+				addWard("p66", "Phường 8");
+				addWard("p67", "Phường 9");
+				addWard("p68", "Phường 10");
+				addWard("p69", "Phường 11");
+				addWard("p70", "Phường 12");
+				addWard("p71", "Phường 13");
+				addWard("p72", "Phường 14");
+				addWard("p73", "Phường 15");
+				addWard("p74", "Phường 16");
+				addWard("p75", "Phường 17");
+				addWard("p76", "Phường 18");
+				break;
+
+			case "q5":
+				addWard("p77", "Phường 1");
+				addWard("p78", "Phường 2");
+				addWard("p79", "Phường 3");
+				addWard("p80", "Phường 4");
+				addWard("p81", "Phường 5");
+				addWard("p82", "Phường 6");
+				addWard("p83", "Phường 7");
+				addWard("p84", "Phường 8");
+				addWard("p85", "Phường 9");
+				addWard("p86", "Phường 10");
+				addWard("p87", "Phường 11");
+				addWard("p88", "Phường 12");
+				addWard("p89", "Phường 13");
+				addWard("p90", "Phường 14");
+				addWard("p91", "Phường 15");
+				break;
+
+			case "q6":
+				addWard("p92", "Phường 1");
+				addWard("p93", "Phường 2");
+				addWard("p94", "Phường 3");
+				addWard("p95", "Phường 4");
+				addWard("p96", "Phường 5");
+				addWard("p97", "Phường 6");
+				addWard("p98", "Phường 7");
+				addWard("p99", "Phường 8");
+				addWard("p100", "Phường 9");
+				addWard("p101", "Phường 10");
+				addWard("p102", "Phường 11");
+				addWard("p103", "Phường 12");
+				addWard("p104", "Phường 13");
+				addWard("p105", "Phường 14");
+				break;
+
+			case "q7":
+				addWard("p106", "Tân Thuận Đông");
+				addWard("p107", "Tân Thuận Tây");
+				addWard("p108", "Tân Kiểng");
+				addWard("p109", "Tân Hưng");
+				addWard("p110", "Bình Thuận");
+				addWard("p111", "Tân Quy");
+				addWard("p112", "Phú Thuận");
+				addWard("p113", "Tân Phú");
+				addWard("p114", "Tân Phong");
+				addWard("p115", "Phú Mỹ");
+				break;
+
+			case "q8":
+				addWard("p116", "Phường 1");
+				addWard("p117", "Phường 2");
+				addWard("p118", "Phường 3");
+				addWard("p119", "Phường 4");
+				addWard("p120", "Phường 5");
+				addWard("p121", "Phường 6");
+				addWard("p122", "Phường 7");
+				addWard("p123", "Phường 8");
+				addWard("p124", "Phường 9");
+				addWard("p125", "Phường 10");
+				addWard("p126", "Phường 11");
+				addWard("p127", "Phường 12");
+				addWard("p128", "Phường 13");
+				addWard("p129", "Phường 14");
+				addWard("p130", "Phường 15");
+				addWard("p131", "Phường 16");
+				break;
+
+			case "q10":
+				addWard("p132", "Phường 1");
+				addWard("p133", "Phường 2");
+				addWard("p134", "Phường 3");
+				addWard("p135", "Phường 4");
+				addWard("p136", "Phường 5");
+				addWard("p137", "Phường 6");
+				addWard("p138", "Phường 7");
+				addWard("p139", "Phường 8");
+				addWard("p140", "Phường 9");
+				addWard("p141", "Phường 10");
+				addWard("p142", "Phường 11");
+				addWard("p143", "Phường 12");
+				addWard("p144", "Phường 13");
+				addWard("p145", "Phường 14");
+				addWard("p146", "Phường 15");
+				break;
+
+			case "q11":
+				addWard("p147", "Phường 1");
+				addWard("p148", "Phường 2");
+				addWard("p149", "Phường 3");
+				addWard("p150", "Phường 4");
+				addWard("p151", "Phường 5");
+				addWard("p152", "Phường 6");
+				addWard("p153", "Phường 7");
+				addWard("p154", "Phường 8");
+				addWard("p155", "Phường 9");
+				addWard("p156", "Phường 10");
+				addWard("p157", "Phường 11");
+				addWard("p158", "Phường 12");
+				addWard("p159", "Phường 13");
+				addWard("p160", "Phường 14");
+				addWard("p161", "Phường 15");
+				addWard("p162", "Phường 16");
+				break;
+
+			case "q12":
+				addWard("p163", "Phường An Phú Đông");
+				addWard("p164", "Phường Đông Hưng Thuận")
+				addWard("p165", "Phường Hiệp Thành")
+				addWard("p166", "Phường Tân Chánh Hiệp")
+				addWard("p167", "Phường Tân Hưng Thuận")
+				addWard("p168", "Phường Tân Thới Hiệp")
+				addWard("p169", "Phường Tân Thới Nhất")
+				addWard("p170", "Phường Thạnh Lộc")
+				addWard("p171", "Phường Thạnh Xuân")
+				addWard("p172", "Phường Thới An")
+				addWard("p173", "Phường Trung Mỹ Tây")
+				break;
+			case "qgo":
+				addWard("p174", "Phường 1");
+				addWard("p164", "Phường 2");
+				addWard("p165", "Phường 3");
+				addWard("p166", "Phường 4");
+				addWard("p167", "Phường 5");
+				addWard("p168", "Phường 6");
+				addWard("p169", "Phường 7");
+				addWard("p170", "Phường 8");
+				addWard("p171", "Phường 9");
+				addWard("p172", "Phường 10");
+				addWard("p173", "Phường 11");
+				addWard("p175", "Phường 12");
+				addWard("p176", "Phường 13");
+				addWard("p177", "Phường 14");
+				addWard("p178", "Phường 15");
+				addWard("p179", "Phường 16");
+				addWard("p180", "Phường 17");
+				break;
+
+			case "qbt":
+				addWard("p181", "Phường 1");
+				addWard("p182", "Phường 2");
+				addWard("p183", "Phường 3");
+				addWard("p184", "Phường 5");
+				addWard("p185", "Phường 6");
+				addWard("p186", "Phường 7");
+				addWard("p187", "Phường 11");
+				addWard("p188", "Phường 12");
+				addWard("p189", "Phường 13");
+				addWard("p190", "Phường 14");
+				addWard("p191", "Phường 15");
+				addWard("p192", "Phường 17");
+				addWard("p193", "Phường 19");
+				addWard("p194", "Phường 21");
+				addWard("p195", "Phường 22");
+				addWard("p196", "Phường 24");
+				addWard("p197", "Phường 25");
+				addWard("p198", "Phường 26");
+				addWard("p199", "Phường 27");
+				addWard("p200", "Phường 28");
+				break;
+
+			case "qphu":
+				addWard("p201", "Phường 1");
+				addWard("p202", "Phường 2");
+				addWard("p203", "Phường 3");
+				addWard("p204", "Phường 4");
+				addWard("p205", "Phường 5");
+				addWard("p206", "Phường 7");
+				addWard("p207", "Phường 8");
+				addWard("p208", "Phường 9");
+				addWard("p209", "Phường 10");
+				addWard("p210", "Phường 11");
+				addWard("p211", "Phường 13");
+				addWard("p212", "Phường 15");
+				addWard("p213", "Phường 17");
+				break;
+			case "qtanbinh":
+				addWard("p214", "Phường 1");
+				addWard("p215", "Phường 2");
+				addWard("p216", "Phường 3");
+				addWard("p217", "Phường 4");
+				addWard("p218", "Phường 5");
+				addWard("p219", "Phường 6");
+				addWard("p220", "Phường 7");
+				addWard("p221", "Phường 8");
+				addWard("p222", "Phường 9");
+				addWard("p223", "Phường 10");
+				addWard("p224", "Phường 11");
+				addWard("p225", "Phường 12");
+				addWard("p226", "Phường 13");
+				addWard("p227", "Phường 14");
+				addWard("p228", "Phường 15");
+				break;
+			case "qbinhtan":
+				addWard("p229", "Phường An Lạc");
+				addWard("p230", "Phường An Lạc A");
+				addWard("p231", "Phường Bình Hưng Hòa");
+				addWard("p232", "Phường Bình Hưng Hòa A");
+				addWard("p233", "Phường Bình Hưng Hòa B");
+				addWard("p234", "Phường Bình Trị Đông");
+				addWard("p235", "Phường Bình Trị Đông A");
+				addWard("p236", "Phường Bình Trị Đông B");
+				addWard("p237", "Phường Tân Tạo");
+				addWard("p238", "Phường Tân Tạo A");
+				break;
+
+		}
+	}
+	function addWard(value, name) {
+		var wardSelect = document.getElementById("ward");
+		var option = document.createElement("option");
+		option.value = value;
+		option.textContent = name;
+		wardSelect.appendChild(option);
+	}
+
+</script>
+@await RenderSectionAsync("Scripts", required: false)
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

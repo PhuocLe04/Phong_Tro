@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Phong_Tro.Models.BaiDang>
+
+<h2>Search Results</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ma Bai Dang</th>
+                <th>Ma Chu Tro</th>
+                <th>Ma Phong Tro</th>
+                <th>Gia Phong</th>
+                <th>Trang Thai</th>
+                <th>Noi Dung</th>
+                <th>Ngay Dang</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaBaiDang</td>
+                    <td>@item.MaChuTro</td>
+                    <td>@item.MaPhongTro</td>
+                    <td>@item.GiaPhong</td>
+                    <td>@item.NoiDung</td>
+                    <td>@item.NgayDang</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No results found.</p>
+}

@@ -1,0 +1,81 @@
+﻿@* @model IEnumerable<Phong_Tro.Models.BaiDang>
+
+@{
+    ViewData["Title"] = "Kết quả tìm kiếm";
+}
+
+<h1>Kết quả tìm kiếm</h1>
+
+@if (!Model.Any())
+{
+    <p>Không có kết quả nào được tìm thấy.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Địa chỉ</th>
+                <th>Quận</th>
+                <th>Phường</th>
+                <th>Diện tích</th>
+                <th>Số lượng người tối đa</th>
+                <th>Loại phòng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var phongTro in Model)
+            {
+                <tr>
+                    <td>@phongTro.MaPhongTroNavigation.DiaChi</td>
+                    <td>@phongTro.MaPhongTroNavigation.Quan</td>
+                    <td>@phongTro.MaPhongTroNavigation.Phuong</td>
+                    <td>@phongTro.MaPhongTroNavigation.DienTich</td>
+                    <td>@phongTro.MaPhongTroNavigation.SlnguoiToiDa</td>
+                    <td>@phongTro.MaPhongTroNavigation.MaLoaiPhongNavigation.TenLoaiPhong</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+ *@
+ @model IEnumerable<Phong_Tro.Models.BaiDang>
+
+@{
+    ViewData["Title"] = "Kết quả tìm kiếm";
+}
+
+<h1>Kết quả tìm kiếm</h1>
+
+@if (!Model.Any())
+{
+    <p>Không có kết quả nào được tìm thấy.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Địa chỉ</th>
+                <th>Quận</th>
+                <th>Phường</th>
+                <th>Diện tích</th>
+                <th>Số lượng người tối đa</th>
+                <th>Loại phòng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var baiDang in Model)
+            {
+                <tr>
+                    <td>@baiDang.MaPhongTroNavigation.DiaChi</td>
+                    <td>@baiDang.MaPhongTroNavigation.Quan</td>
+                    <td>@baiDang.MaPhongTroNavigation.Phuong</td>
+                    <td>@baiDang.MaPhongTroNavigation.DienTich</td>
+                    <td>@baiDang.MaPhongTroNavigation.SlnguoiToiDa</td>
+                    <td>@baiDang.MaPhongTroNavigation.MaLoaiPhongNavigation.TenLoaiPhong</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Phong_Tro.Models.PhongTro>
+
+<h2>Kết quả tìm kiếm</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaPhongTro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienTich)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienIch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HinhAnh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SlnguoiToiDa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaLoaiPhongNavigation)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhongTro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienTich)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TienIch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HinhAnh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SlnguoiToiDa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoaiPhongNavigation)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

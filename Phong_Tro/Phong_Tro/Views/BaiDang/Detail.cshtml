@@ -1,0 +1,969 @@
+﻿@{
+    ViewData["Title"] = "Chi tiết bài đăng";
+    Layout = "~/Views/Shared/Main.cshtml";
+    System.Globalization.CultureInfo cul = new System.Globalization.CultureInfo("vi-VN");
+    System.Globalization.NumberFormatInfo numberInfo = cul.NumberFormat;
+}
+
+@* <div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <i> > </i>
+                </li>
+                <li>
+                    <a asp-controller="SanPham" asp-action="Index">Sản Phẩm</a>
+                    <i>></i>
+                </li>
+                <li>
+                    <a asp-controller="SanPham" asp-action="Index" asp-route-Id=" @ViewBag.sanPhams.MaNhaSanXuat">@ViewBag.TenNhaSanXuat</a>
+                    <i>></i>
+                </li>
+                <li>
+                    <a asp-controller="SanPham" asp-action="Detail" asp-route-Id="@ViewBag.sanPhams.MaSanPham">@ViewBag.TenLoaiSanPham @ViewBag.TenRam/@ViewBag.tenBoNho</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+ *@
+<div class="cps-container cps-body">
+    <div style="display:none;">
+        <div id="page_loader">
+            <div class="logo"></div>
+            <div class="loader"></div>
+        </div>
+    </div>
+    <div>
+        <!-- Comment -->
+        <div id="productDetailV2" data-fetch-key="product-detail:0" ins-init-condition="#LmNwcy1jb250YWluZXIgW2RhdGEtZmV0Y2gta2V5XTpmaXJzdA==">
+            <section class="block-detail-product">
+                <div class="box-detail-product">
+                    <div class="box-detail-product__box-left column is-three-fifths banner">
+                        <div class="box-gallery">
+                            <div class="gallery-product-detail mb-2">
+                                <div class="gallery-slide gallery-top swiper-container" style="overflow: hidden; position: relative;">
+                                    <div class="swiper-wrapper">
+                                        @foreach (var img in ViewBag.Anh)
+                                        {
+                                            <div class="swiper-slide">
+                                                <a href="@img.Urlanh" class="spotlight">
+                                                    <img src="@img.Urlanh" height="358" loading="lazy" rel="preload" />
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination"></div>
+                                    <!-- Add Navigation -->
+                                    <div class="swiper-button-next button__view-gallery-next">
+                                        <div class="icon">
+                                            <svg height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                <path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-button-prev button__view-gallery-prev">
+                                        <div class="icon">
+                                            <svg height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                <path d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="thumbnail-slide swiper-container gallery-thumbs " style="display:;">
+                                    <div class="swiper-wrapper">
+                                        @foreach (var img in ViewBag.Anh)
+                                        {
+                                            <div class="swiper-slide button__view-gallery">
+                                                <img src="@img.Urlanh" width="58" height="58" loading="lazy">
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <!-- Hết block gallery -->
+                        <!-- Bắt đầu block thông tin chi tiết -->
+                        <div class="mt-1">
+                            <div class="box-warranty-info">
+                                <div class="box-title">
+                                    <strong>@ViewBag.baidang.GiaPhong.ToString("N0", numberInfo) đ/Tháng - @ViewBag.phongTro.DienTich m²</strong>
+                                </div>
+                                <div class="box-content warranty-info">
+                                    <div class="item-warranty-info">
+                                        <div class="warranty-info__icon">
+                                            <div class="media-left media-middle">
+                                                <img class="AdParam_adParamIcon__m87Vj" alt="location" src="https://static.chotot.com/storage/icons/logos/ad-param/location.svg" height="15">
+                                            </div>
+                                        </div>
+                                        <div class="description">
+                                            Địa Chỉ: @ViewBag.phongTro.DiaChi, Phường @ViewBag.phongTro.Phuong, Quận @ViewBag.phongTro.Quan
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <hr />
+                        <!-- Kết thúc block thông tin chi tiết -->
+                        <!-- Bắt đầu block đặc điểm -->
+                        <div class="mt-2">
+                            <div class="box-warranty-info">
+                                <div class="box-title">
+                                    <strong>Đặc điểm</strong>
+                                </div>
+                                <div class="box-content warranty-info">
+                                    <div class="item-warranty-info">
+                                        <div class="warranty-info__icon">
+                                            <div class="media-left media-top">
+                                                <img class="AdParam_adParamIcon__m87Vj" alt="Số tiền cọc" src="https://static.chotot.com/storage/icons/logos/ad-param/deposit.png" height="15">
+                                            </div>
+                                        </div>
+                                        <div class="description">
+                                            Số Tiền Cọc: @ViewBag.baidang.GiaPhong.ToString("N0", numberInfo) đ
+                                        </div>
+                                    </div>
+                                    <div class="item-warranty-info">
+                                        <div class="warranty-info__icon">
+                                            <div class="media-left media-top">
+                                                <img class="AdParam_adParamIcon__m87Vj" alt="Diện tích" src="https://static.chotot.com/storage/icons/logos/ad-param/size.png" height="15">
+                                            </div>
+                                        </div>
+                                        <div class="description">
+                                            Diện Tích: @ViewBag.phongTro.DienTich m²
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <hr />
+                        <!-- Kết thúc block đặc điểm -->
+                        <!-- Bắt đầu block mô tả chi tiết -->
+                        <div class="mt-3">
+                            <div class="box-warranty-info">
+                                <div class="box-title">
+                                    <strong>Mô tả chi tiết</strong>
+                                </div>
+                                <div class="box-content warranty-info">
+                                    <div class="item-warranty-info">
+                                        <div class="description">
+                                            @Html.Raw(ViewBag.phongTro.TienIch) <!-- Use Html.Raw to render HTML content -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <hr />
+                    </div>
+                    <div class="box-detail-product__box-center column bannerTopHead">
+                        <div class="box-Linked">
+                            <strong>Chủ trọ: @ViewBag.ChuTro.HoTen</strong>
+                            <hr />
+                            <strong>Liên Hệ Người Bán: </strong>
+                            <br />
+                            <div style="background-color: #F45C5D; color: white; padding: 10px; display: inline-block;">
+                                <span style="margin-right: 20px;">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span id="phoneNumber">
+                                        @if (!string.IsNullOrEmpty(ViewBag.ChuTro.Sdt))
+                                        {
+                                            string lastThreeDigits = ViewBag.ChuTro.Sdt.Substring(ViewBag.ChuTro.Sdt.Length - 3);
+                                            string dullDigits = new string('*', ViewBag.ChuTro.Sdt.Length - 3);
+                                            @dullDigits
+                                            @lastThreeDigits
+                                        }
+                                    </span>
+                                </span>
+                                <button onclick="revealPhoneNumber()" style="background-color: transparent; border: none; color: white;">
+                                    BẤM ĐỂ HIỆN SỐ
+                                </button>
+                            </div>
+                            <button id="chatButton" onclick="promptLogin()" style="border: 2px solid #F45C5D; border-radius: 5px; background-color: white; color: #F45C5D; padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px;">
+                                <i class="fa fa-comments" aria-hidden="true"></i> CHAT VỚI NGƯỜI BÁN
+                            </button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="box-content-comment">
+                        <!-- Phần thêm đánh giá -->
+                        <div>
+                            <h3>Thêm Đánh Giá</h3>
+                            <form asp-controller="BaiDang" asp-action="AddDanhGia" method="post">
+                                <input type="hidden" name="MaKhachHang" value="1" /> <!-- Thay thế bằng ID thực của người dùng -->
+
+                                <input type="hidden" name="MaBaiDang" value="@ViewBag.baidang.MaBaiDang" />
+
+                                <div class="form-group">
+                                    <label for="DiemDanhGia">Điểm Đánh Giá (từ 1 đến 5):</label>
+                                    <input type="number" id="DiemDanhGia" name="DiemDanhGia" min="1" max="5" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NoiDung">Nội Dung:</label>
+                                    <textarea id="NoiDung" name="NoiDung" class="form-control" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Gửi Đánh Giá</button>
+                            </form>
+                        </div>
+                        <hr />
+                        <div>
+                            <h3>Đánh Giá</h3>
+                            <div>
+                                @if (ViewBag.danhGia.Count > 0)
+                                {
+                                    <ul>
+                                        @foreach (var dg in ViewBag.danhGia)
+                                        {
+                                            <li>
+                                                <strong>Điểm Đánh Giá:</strong> @dg.DiemDanhGia <br />
+                                                <strong>Ngày Đánh Giá:</strong> @dg.NgayDanhGia.ToShortDateString() <br />
+                                                <strong>Nội Dung:</strong> @dg.NoiDung
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p>Chưa có đánh giá nào cho phòng trọ này.</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+
+    </div>
+    <hr />
+
+</div>
+
+<!-- Initialize Swiper -->
+<script>
+    function promptLogin() {
+        // Replace the URL below with the link to your login page
+        window.location.href = 'your-login-page-url';
+    }
+    function revealPhoneNumber() {
+        var phoneNumberSpan = document.getElementById("phoneNumber");
+        var phoneNumber = "@ViewBag.ChuTro.Sdt";
+        phoneNumberSpan.innerText = phoneNumber;
+    }
+    // Thêm sự kiện cho nút mở modal
+    document.addEventListener('DOMContentLoaded', function () {
+        const showModalButton = document.getElementById('showModal');
+        const modal = document.getElementById('myModal');
+        const closeModalButtons = document.querySelectorAll('.close-button-modal, .modal-background');
+
+        showModalButton.addEventListener('click', function () {
+            modal.classList.add('is-active');
+        });
+
+        closeModalButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                modal.classList.remove('is-active');
+            });
+        });
+    });
+
+    // Thêm sự kiện cho các box item
+    var itemBoxes = document.querySelectorAll('.item-box');
+
+    itemBoxes.forEach(function (itemBox) {
+        itemBox.addEventListener('click', function () {
+            // Loại bỏ lớp active từ tất cả các button box khác
+            itemBoxes.forEach(function (box) {
+                box.classList.remove('active');
+            });
+
+            // Thêm lớp active vào button box được nhấn
+            itemBox.classList.add('active');
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Khởi tạo Swiper cho slide chính
+        var mainSwiper = new Swiper('.gallery-slide', {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 1,
+            autoplay: {
+                delay: 5000,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // Khởi tạo Swiper cho thumbnail
+        var thumbnailSwiper = new Swiper('.thumbnail-slide', {
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            loop: true,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            autoplay: {
+                delay: 5000,
+            },
+        });
+
+        // Kết nối Swiper chính và Swiper thumbnail
+        mainSwiper.controller.control = thumbnailSwiper;
+        thumbnailSwiper.controller.control = mainSwiper;
+
+        // Bắt sự kiện khi click vào các thumbnail
+        var thumbnailItems = document.querySelectorAll('.thumbnail-slide .swiper-slide');
+
+        thumbnailItems.forEach(function (item, index) {
+            item.addEventListener('click', function () {
+                mainSwiper.slideTo(index); // Chuyển slide chính đến slide tương ứng với thumbnail được nhấp
+            });
+        });
+
+        // Bắt sự kiện khi click vào ảnh có id là "icons8-video-playlist-100"
+        var videoThumbnail = document.getElementById('icons8-video-playlist-100');
+
+        if (videoThumbnail) {
+            videoThumbnail.addEventListener('click', function () {
+                thumbnailSwiper.slideTo(0); // Quay về vị trí của ảnh có id là "icons8-video-playlist-100"
+            });
+        }
+    });
+
+</script>
+<style>
+
+    /* Style for Pricing and Address */
+    .box-warranty-info:nth-child(2) {
+        margin-top: 20px;
+    }
+
+    /* Style for Property Features */
+    .box-warranty-info:nth-child(3) {
+        margin-top: 20px;
+    }
+
+    /* Style for Detailed Description */
+    .box-warranty-info:nth-child(4) {
+        margin-top: 20px;
+    }
+
+    /* Style for Comments Section */
+    .box-content-comment {
+        clear: both;
+        margin-top: 20px;
+    }
+
+        /* Style for Add Review Section */
+        .box-content-comment > div:last-child {
+            margin-top: 20px;
+        }
+
+    .cps-container {
+        max-width: 1200px; /* Adjust the maximum width as needed */
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 20px; /* Add padding around the container */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    /* Style for cps-body */
+    .cps-body {
+        background-color: #f0f0f0; /* Set background color */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        padding: 20px; /* Add padding inside the container */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+        /* Box Detail Product Styles */
+    .box-detail-product__box-left {
+        width: 60%;
+        float: left;
+    }
+    .block-detail-product{
+        width: auto;
+    }
+
+    .block-detail-product .box-gallery {
+        position: relative;
+    }
+
+    .block-detail-product .box-detail-product .box-detail-product__box-left.bannerTopHead {
+        top: 154px
+    }
+
+    .block-detail-product .box-detail-product .box-detail-product__box-center.bannerTopHead {
+        top: 154px;
+    }
+
+    .block-detail-product .box-detail-product [class*=box-detail-product__box-] {
+        overflow: hidden;
+        padding: 0
+    }
+    .mb-2 {
+        margin-bottom: .5rem !important;
+    }
+
+    .my-3 {
+        margin-bottom: .75rem !important;
+        margin-top: .75rem !important;
+    }
+
+    .columns {
+        margin-left: -.75rem;
+        margin-right: -.75rem;
+        margin-top: -.75rem;
+    }
+
+        /* Flexbox Styles */
+    .is-flex {
+        display: flex !important;
+    }
+
+    .is-align-items-center {
+        align-items: center !important;
+    }
+    strong {
+        color: #363636;
+        font-weight: 700;
+    }
+        /* Linked Box Styles */
+    .box-linked {
+        margin-bottom: 5px;
+    }
+
+    .box-linked .list-linked {
+        display: flex;
+        flex-wrap: wrap;
+        width: 60%;
+    }
+
+    .box-linked .list-linked .item-linked {
+        align-items: center;
+        background: #fff;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        color: #444;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        gap: 3px;
+        justify-content: center;
+        margin: 0 0 10px;
+        overflow: hidden;
+        padding: 5px 4px;
+        position: relative;
+        text-decoration: none;
+        width: calc(33.33333% - 6.66667px);
+    }
+         /* BOX */
+    .box-warranty-info .box-content.warranty-info {
+        font-size: 12px;
+    }
+    .box-warranty-info .box-content.warranty-info .item-warranty-info {
+        display: flex;
+        font-size: inherit;
+        margin-bottom: 10px;
+    }
+    .box-warranty-info .box-content.warranty-info .icon {
+        margin-right: 10px;
+        width: 20px;
+    }
+    .icon {
+        align-items: center;
+        display: inline-flex;
+        height: 1.5rem;
+        justify-content: center;
+        width: 1.5rem;
+    }
+    .box-warranty-info .box-content.warranty-info .description {
+        font-size: 14px;
+        margin-top: 2px;
+        max-width: calc(100% - 40px);
+    }
+       /*  Thumbnail Slide Styles */
+    .box-linked .list-linked .item-linked div {
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        font-weight: 600;
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+    }
+
+    .box-linked .list-linked .item-linked a span,
+    .box-linked .list-linked .item-linked a strong {
+        color: #444;
+        text-align: left;
+    }
+
+    .box-linked .list-linked .item-linked a img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .box-linked .list-linked .item-linked.active {
+        border: 1px solid #d70018;
+    }
+
+    .box-linked .list-linked .item-linked.active:after {
+        background-color: #d70018;
+        border-radius: 0 0 10px 0;
+        color: #fff;
+        content: "✓";
+        font-size: 10px;
+        height: 13px;
+        left: 0;
+        padding-bottom: 15px;
+        padding-left: 4px;
+        position: absolute;
+        top: 0;
+        width: 18px;
+    }
+
+    .box-linked .list-linked .item-linked:not(:nth-child(3n)) {
+        margin-right: 10px;
+    }
+
+        /* Warranty Box Styles */
+    .box-linked .box-title p {
+        color: #444;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .block-detail-product .box-detail-product .box-detail-product__box-left {
+        height: -moz-max-content;
+        height: max-content;
+        top: 114px;
+        z-index: 11;
+    }
+
+        /*  Swiper Styles */
+    .swiper-container {
+        list-style: none;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 60px;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-slide {
+        flex: 0 0 auto;
+        width: 100%;
+        text-align: center;
+        background-color: #fff;
+        transition: opacity 0.5s ease-in-out;
+        flex-shrink: 0;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+    }
+
+    .swiper-slide img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .swiper-container:hover .swiper-button-next,
+    .swiper-container:hover .swiper-button-prev {
+        opacity: 1;
+    }
+
+    /* Thumbnail slider styles */
+    .thumbnail-slider {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .thumbnail-slider .swiper-slide {
+        width: 100px;
+        height: 80px;
+    }
+
+    /* Other styles */
+    .gallery-slide {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .block-detail-product .box-detail-product [class*=box-detail-product__box-]:not(:first-child) {
+        padding: 0 0 0 20px;
+    }
+
+
+    .cps-block-content {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+        display: block;
+        margin-bottom: 15px;
+        margin-right: auto;
+        max-height: 2000px;
+        min-height: 0;
+        overflow: hidden;
+        padding: 15px;
+        position: relative;
+        text-align: justify;
+        width: 100%;
+    }
+
+        /* Global Block Elements */
+    article, aside, figure, footer, header, hgroup, section {
+        display: block;
+    }
+
+        /* Item Box Styles */
+    .item-box {
+        width: auto;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .item-box.active {
+        border: 2px solid #007bff;
+        border-radius: 5px;
+    }
+
+    .item-box:hover {
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+
+    .item-box iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    .item-box img {
+        width: 100%;
+        height: auto;
+    }
+
+        /* Modal Styles */
+    .modal {
+        
+    }
+
+    .modal.is-active {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    .modal-background {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal-content {
+        border: none;
+        max-width: 60%;
+        max-height: 80%;
+        overflow: auto;
+    }
+
+    .modal-card {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .close-button-modal {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+        /* Header of Modal Styles */
+    .modal .modal-card header.modal-card-head {
+        justify-content: space-between;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .modal .modal-card header.modal-card-head p.title {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .modal .modal-card header.modal-card-head .delete.modal__button {
+        margin-left: auto;
+    }
+
+        /*  Newsletter Form Styles */
+    .sub-some.child-momu {
+        margin-top: 4px;
+    }
+    .sub-some.child-momu h5 {
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+
+    .sub-some.child-momu ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .sub-some.child-momu ul li {
+        margin-right: 10px;
+    }
+
+        /* gallery */
+    /* Styles for the gallery slide navigation buttons */
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-prev {
+        border-radius: 0 100px 100px 0;
+        left: 0;
+        padding-left: 0;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-next {
+        border-radius: 100px 0 0 100px;
+        padding-right: 0;
+        right: 0;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-next,
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-prev {
+        align-items: center;
+        background: rgba(0, 0, 0, .3);
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
+        display: flex;
+        font-size: 1.8rem;
+        height: 60px;
+        justify-content: center;
+        opacity: 0;
+        outline: none;
+        top: 50%;
+        transition: .3s;
+        width: 30px;
+    }
+
+        /* Styles for the gallery slide navigation buttons icons */
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-next .icon,
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-prev .icon {
+        fill: #fff;
+        width: 14px;
+    }
+
+        /* Hide navigation buttons when disabled */
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-next.swiper-button-disabled,
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-next:after,
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-prev.swiper-button-disabled,
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-button-prev:after {
+        display: none;
+    }
+
+    /* Show navigation buttons on hover */
+    .gallery-product-detail .gallery-slide:hover .swiper-button-next,
+    .gallery-product-detail .gallery-slide:hover .swiper-button-prev {
+        opacity: 1;
+    }
+
+    /* Styles for the block-gallery container */
+    .block-detail-product .box-gallery {
+        position: relative;
+    }
+
+    /* Styles for the bannerTopHead */
+    .block-detail-product .box-detail-product .box-detail-product__box-left.bannerTopHead {
+        top: 154px;
+    }
+
+    .block-detail-product .box-detail-product .box-detail-product__box-center.bannerTopHead {
+        top: 154px;
+    }
+
+    /* Styles for the gallery slide */
+    .gallery-product-detail .gallery-slide {
+        align-items: center;
+        border: 1px solid #d1d5db;
+        border-radius: 15px;
+        display: flex;
+        height: 400px;
+        justify-content: center;
+        margin: 0 0 10px;
+        width: 100%;
+    }
+
+    /* Styles for the video inside the gallery slide */
+    #productDetailV2 .gallery-product-detail .gallery-slide.swiper-container .swiper-slide.ksp-gallery .ksp-video {
+        display: block;
+        padding: 0;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-slide.ksp-gallery .box-ksp {
+        align-items: center;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        justify-content: flex-start;
+        line-height: 1.45;
+        overflow: hidden;
+        padding: 10px;
+        position: relative;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-slide.ksp-gallery .ksp-video .video-thumbnail {
+        display: block;
+        height: 400px;
+        padding: 0;
+        width: 100%;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-slide.ksp-gallery .ksp-video {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* Styles for the thumbnail slide */
+    .gallery-product-detail .thumbnail-slide.swiper-container .swiper-wrapper .swiper-slide.ksp-thumbs svg {
+        height: 20px;
+        margin-top: 2px;
+    }
+
+    .gallery-product-detail .thumbnail-slide.swiper-container .swiper-wrapper .swiper-slide.ksp-thumbs p {
+        color: #666;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1;
+        margin: 0;
+        text-align: center;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-wrapper {
+        height: 100%;
+    }
+
+    .gallery-product-detail .gallery-slide.swiper-container .swiper-slide {
+        align-items: center;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+    }
+    .gallery-product-detail .thumbnail-slide.swiper-container .swiper-wrapper .swiper-slide.swiper-slide-thumb-active {
+        box-shadow: 0 0 0 1px #d70018;
+    }
+
+    .gallery-product-detail .thumbnail-slide.swiper-container .swiper-wrapper .swiper-slide.ksp-thumbs {
+        align-items: center;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+
+    .gallery-product-detail .thumbnail-slide.swiper-container {
+        width: 100%;
+    }
+
+    .gallery-product-detail .thumbnail-slide.swiper-container .swiper-wrapper .swiper-slide {
+        background: #fff;
+        border-radius: .5rem;
+        box-shadow: 0 0 0 1px #d1d5db;
+        cursor: pointer;
+        height: 50px;
+        overflow: hidden;
+        width: 50px;
+    }
+    /* Hide page loader */
+    #page_loader {
+        display: none;
+    }
+
+    /* Style for the box-warranty-info */
+    .box-warranty-info {
+        margin-top: 10px;
+    }
+
+    /* Style for the warranty-info__icon */
+    .warranty-info__icon {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    /* Style for the media-left and media-middle */
+    .media-left,
+    .media-middle {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Style for the description */
+    .description {
+        color: #333;
+        font-size: 14px;
+    }
+
+    /* Style for the box-Linked */
+    .box-Linked {
+        background-color: #FFCC99;
+        color: white;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    /* Style for the chatButton */
+    #chatButton {
+        border: 2px solid green;
+        border-radius: 5px;
+        background-color: white;
+        color: green;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    /* Style for the row */
+    .row {
+        margin-bottom: 10px;
+    }
+
+
+</style>
